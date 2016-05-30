@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/billyquith/libui.git
+	branch = master
+	commit = 5ee0bececdc345765b16efc1c3ed61d6ac19600e
+	parent = 78d47d04d3a61b18d5663cebf4589e602d701d05
+	cmdver = 0.3.0

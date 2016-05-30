@@ -1,0 +1,16 @@
+// 9 june 2015
+
+// Visual Studio (Microsoft's compilers)
+// VS2013 is needed for va_copy().
+#ifdef _MSC_VER
+#if _MSC_VER < 1800
+#error Visual Studio 2013 or higher is required to build libui.
+#endif
+#endif
+
+// MinGW
+#ifdef __MINGW32__
+#error At present, MinGW is not supported; see README.md for details.
+#endif
+
+// other compilers can be added here as necessary
