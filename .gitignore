@@ -54,8 +54,10 @@ ENV/
 
 ### Xcode ###
 
+*.xcodeproj/
+
 ## Build generated
-build/
+*.build/
 DerivedData/
 
 ## Various settings
