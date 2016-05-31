@@ -4,6 +4,8 @@ set(LIBUICPP_SOURCES
     ui.cpp
 )
 
+add_definitions(-std=c++0x)
+
 add_library(libui-cpp ${LIBUICPP_SOURCES})
 
 use_libui(libui-cpp)
