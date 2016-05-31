@@ -46,7 +46,7 @@ void Control::show(bool s)
         uiControlHide(getUiControl());
 }
 
-bool Control::showing()
+bool Control::showing() const
 {
     return uiControlVisible(getUiControl()) != 0;
 }
@@ -59,7 +59,7 @@ void Control::enable(bool e)
         uiControlEnable(getUiControl());
 }
 
-bool Control::enabled()
+bool Control::enabled() const
 {
     return uiControlEnabled(getUiControl()) != 0;
 }
