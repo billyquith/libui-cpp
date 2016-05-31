@@ -5,7 +5,7 @@
 ;
 [subrepo]
 	remote = https://github.com/billyquith/libui.git
-	branch = cmake
+	branch = cpp
 	commit = 10526bb181dbe7d7f74724b909f30476d818e180
 	parent = c45f8f4b2a91c1370c2ba82886cb556f0eda9d23
 	cmdver = 0.3.0
