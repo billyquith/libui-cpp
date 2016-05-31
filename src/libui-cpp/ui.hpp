@@ -4,6 +4,14 @@
 
 namespace ui {
     
+#define UICPP_UI(TYPE,PTR) \
+    TYPE PTR; \
+    public: \
+    uiControl* getUiControl() override { return uiControl(PTR); } \
+    uiControl const* getUiControl() const override { return uiControl(PTR); } \
+    private:
+
+    
     namespace detail {
         
     } // detail
@@ -38,28 +46,24 @@ namespace ui {
     
     class Button : public Control
     {
-        uiButton *button_;
+        UICPP_UI(uiButton*, button_);
         
     public:
+        
         Button(const char *text = "");
         ~Button();
         
         const char* text() const;
         Button& setText(const char *text);
-        
-        uiControl* getUiControl() override { return uiControl(button_); }
-        uiControl const* getUiControl() const override { return uiControl(button_); }
     };
     
     
     class Window : public Control
     {
-        uiWindow *window_;
-        
-        uiControl* getUiControl() override { return uiControl(window_); }
-        uiControl const* getUiControl() const override { return uiControl(window_); }
+        UICPP_UI(uiWindow*, window_);
         
     public:
+        
         Window(const char *title, int width = 200, int height = 200, bool hasMenubar = false);
         ~Window();
         
