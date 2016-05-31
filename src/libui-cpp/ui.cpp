@@ -33,11 +33,6 @@ void Ui::main()
 //------------------------------------------------------------------------------
 // Control
 
-//Control::~Control()
-//{
-////    uiControlDestroy(getUiControl());
-//}
-
 void Control::show(bool s)
 {
     if (s)
@@ -63,6 +58,52 @@ bool Control::enabled() const
 {
     return uiControlEnabled(getUiControl()) != 0;
 }
+
+//------------------------------------------------------------------------------
+
+//    CLS::CLS(const char *text)
+//    {
+//        window_ = uiNewWindow(title, width, height, hasMenubar);
+//    }
+//    
+//    CLS::~CLS()
+//    {
+//        uiControlDestroy(uiControl(window_));
+//    }
+//
+//    TYPE CLS::title() const
+//    {
+//        return uiWindowTitle(window_);
+//    }
+//
+//    void CLS::setTitle(TYPE title)
+//    {
+//        uiWindowSetTitle(window_, title);
+//    }
+
+//------------------------------------------------------------------------------
+// Button
+
+Button::Button(const char *text)
+{
+    button_ = uiNewButton(text);
+}
+
+Button::~Button()
+{
+    uiControlDestroy(uiControl(button_));
+}
+
+const char* Button::text() const
+{
+    return uiButtonText(button_);
+}
+
+Button& Button::setText(const char* text)
+{
+    uiButtonSetText(button_, text);
+    return *this;
+}
     
 //------------------------------------------------------------------------------
 // Window
@@ -77,6 +118,28 @@ Window::~Window()
     uiControlDestroy(uiControl(window_));
 }
 
+const char* Window::title() const
+{
+    return uiWindowTitle(window_);
+}
+
+void Window::setTitle(const char *title)
+{
+    uiWindowSetTitle(window_, title);
+}
+
+bool Window::hasMargin() const
+{
+    return uiWindowMargined(window_);
+}
+
+void Window::useMargin(bool use)
+{
+    uiWindowSetMargined(window_, use);
+}
+
 //------------------------------------------------------------------------------
 
 } // namespace ui
+
+
