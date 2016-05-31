@@ -13,8 +13,7 @@ int main(int argc, char *argv[])
             auto w = new ui::Window("UI");
             w->show();
             
-            w->add(new ui::Button())
-                .setText("Hello world");
+            w->setChild(new ui::Button("click me!"));
             
             inst.main();
             

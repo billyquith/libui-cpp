@@ -22,6 +22,7 @@ namespace ui {
     {
     protected:
         virtual ~Control() {}
+        
         virtual uiControl* getUiControl() = 0;
         virtual uiControl const* getUiControl() const = 0;
         
@@ -39,16 +40,15 @@ namespace ui {
     {
         uiButton *button_;
         
-        uiControl* getUiControl() override { return uiControl(button_); }
-        uiControl const* getUiControl() const override { return uiControl(button_); }
-        
     public:
-        Button(const char *text);
+        Button(const char *text = "");
         ~Button();
         
         const char* text() const;
         Button& setText(const char *text);
         
+        uiControl* getUiControl() override { return uiControl(button_); }
+        uiControl const* getUiControl() const override { return uiControl(button_); }
     };
     
     
@@ -68,6 +68,13 @@ namespace ui {
         
         bool hasMargin() const;
         void useMargin(bool use);
+        
+        template <typename C>
+        C& setChild(C* child)
+        {
+            uiWindowSetChild(window_, child->getUiControl());
+            return *child;
+        }
     };
     
     
