@@ -30,6 +30,11 @@ void Ui::main()
     uiMain();
 }
 
+void Ui::quit()
+{
+    uiQuit();
+}
+
 //------------------------------------------------------------------------------
 // Control
 
@@ -103,6 +108,12 @@ Button& Button::setText(const char* text)
 {
     uiButtonSetText(button_, text);
     return *this;
+}
+
+void Button::c_callback(uiButton* uib, void* d)
+{
+    Button *b = reinterpret_cast<Button*>(d);
+    b->cb_(b->data_);
 }
     
 //------------------------------------------------------------------------------

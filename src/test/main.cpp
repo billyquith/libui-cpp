@@ -9,15 +9,16 @@ int main(int argc, char *argv[])
         ui::Ui inst(&opts);
 
         {
-            //auto wnd = std::unique_ptr<ui::Window>(new ui::Window("UI"));
             auto w = new ui::Window("UI");
             w->show();
             
-            w->setChild(new ui::Button("click me!"));
+            w->setChild(new ui::Button("click me!"))
+                .onClicked([&] (void*) {
+                        delete w;
+                        inst.quit();
+                    });
             
             inst.main();
-            
-            delete w;
         }
 
     }

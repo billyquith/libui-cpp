@@ -1,6 +1,7 @@
 
 #include "uidefs.hpp"
 #include "../../ext/libui/ui.h"
+#include <functional>
 
 namespace ui {
     
@@ -23,6 +24,7 @@ namespace ui {
         ~Ui();
         
         void main();
+        void quit();
     };
     
     
@@ -42,21 +44,7 @@ namespace ui {
         void enable(bool enable = true);
         bool enabled() const;
     };
-    
-    
-    class Button : public Control
-    {
-        UICPP_UI(uiButton*, button_);
-        
-    public:
-        
-        Button(const char *text = "");
-        ~Button();
-        
-        const char* text() const;
-        Button& setText(const char *text);
-    };
-    
+
     
     class Window : public Control
     {
@@ -78,6 +66,32 @@ namespace ui {
         {
             uiWindowSetChild(window_, child->getUiControl());
             return *child;
+        }
+    };
+
+    
+    class Button : public Control
+    {
+        UICPP_UI(uiButton*, button_);
+        
+        typedef std::function<void(void*)> callback_t;
+        callback_t cb_;
+        void* data_;
+        static void c_callback(uiButton*,void*);
+        
+    public:
+        
+        Button(const char *text = "");
+        ~Button();
+        
+        const char* text() const;
+        Button& setText(const char *text);
+        
+        void onClicked(callback_t const& callback, void* data = nullptr)
+        {
+            cb_ = callback;
+            data_ = data;
+            uiButtonOnClicked(button_, c_callback, this);
         }
     };
     
