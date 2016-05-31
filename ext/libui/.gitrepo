@@ -6,6 +6,6 @@
 [subrepo]
 	remote = https://github.com/billyquith/libui.git
 	branch = cpp
-	commit = 10526bb181dbe7d7f74724b909f30476d818e180
-	parent = c45f8f4b2a91c1370c2ba82886cb556f0eda9d23
+	commit = 01376f81932a967116caeea5bfb3ea85dd5259b1
+	parent = 2a92f42f0c258aabd6c6e448b82160ac5c5efd2b
 	cmdver = 0.3.0
