@@ -1,4 +1,7 @@
 libui-cpp
 ---------
 
-This is a libui C++ wrapper. **Work in progress** !!
+## This project is abandoned
+
+You are welcome to take this code and use it. When/if libui stablises I may continue it.
+
